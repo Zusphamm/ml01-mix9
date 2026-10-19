@@ -1,0 +1,47 @@
+{
+ "results": {
+  "LIVE": {
+   "sharpe": 1.81,
+   "ret_yr": 61.1,
+   "maxdd": -33.3,
+   "p30neg": 0.28,
+   "worst30": -26.5,
+   "corr_smb": 0.14,
+   "corr_live": 1.0,
+   "y2024": 1.66,
+   "y2025": 1.48,
+   "y2026": 2.79
+  },
+  "CLUST_K15_none": {
+   "sharpe": 2.46,
+   "ret_yr": 100.8,
+   "maxdd": -20.3,
+   "p30neg": 0.27,
+   "worst30": -15.5,
+   "corr_smb": -0.02,
+   "corr_live": 0.25,
+   "y2024": 1.79,
+   "y2025": 1.75,
+   "y2026": 4.5
+  }
+ },
+ "is_sharpe": 3.26,
+ "wfe": 0.75,
+ "members": [
+  "cond|taker10|taker20|low|s3",
+  "diverge|fund_chg40|taker20|s5",
+  "diverge|fund_chg60|illiq10|s5",
+  "diverge|size5|taker5|s5",
+  "diverge|sweep20|tk_us20|s5",
+  "diverge|trade_size10|vwap_dev40|s0",
+  "regime|illiq20|taker40|dispersion|s5",
+  "regime|illiq60|tk_us10|mkt_vol|s3",
+  "regime|vpin60|smart_dumb10|mkt_vol|s5"
+ ],
+ "checks": {
+  "wfe_06": true,
+  "sharpe_ge_live": true,
+  "maxdd_better": true
+ },
+ "pass": true
+}

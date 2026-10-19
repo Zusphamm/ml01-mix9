@@ -1,0 +1,146 @@
+{
+ "LIVE (Binance) | IS 2021-23": {
+  "sharpe": 2.11,
+  "ret_yr": 59.9,
+  "maxdd": -28.8,
+  "p30neg": 0.31,
+  "worst30": -21.0,
+  "corr_smb": 0.52,
+  "corr_live": 1.0,
+  "y2021": 3.04,
+  "y2022": 2.76,
+  "y2023": -0.08
+ },
+ "LIVE (Binance) | OS 2024-26H1": {
+  "sharpe": 1.9,
+  "ret_yr": 65.3,
+  "maxdd": -33.3,
+  "p30neg": 0.28,
+  "worst30": -26.5,
+  "corr_smb": 0.15,
+  "corr_live": 1.0,
+  "y2024": 1.66,
+  "y2025": 1.48,
+  "y2026": 3.11
+ },
+ "LIVE (Binance) | BB 07-01..": {
+  "sharpe": 0.72,
+  "ret_yr": 32.9,
+  "maxdd": -15.4,
+  "p30neg": 0.24,
+  "worst30": -10.4,
+  "corr_smb": 0.28,
+  "corr_live": 1.0,
+  "y2026": 0.72
+ },
+ "MIX9 Binance | IS 2021-23": {
+  "sharpe": 3.26,
+  "ret_yr": 89.5,
+  "maxdd": -10.4,
+  "p30neg": 0.21,
+  "worst30": -9.2,
+  "corr_smb": 0.07,
+  "corr_live": 0.29,
+  "y2021": 4.21,
+  "y2022": 2.6,
+  "y2023": 2.78
+ },
+ "MIX9 Binance | OS 2024-26H1": {
+  "sharpe": 2.42,
+  "ret_yr": 99.0,
+  "maxdd": -20.3,
+  "p30neg": 0.27,
+  "worst30": -15.5,
+  "corr_smb": -0.02,
+  "corr_live": 0.23,
+  "y2024": 1.79,
+  "y2025": 1.75,
+  "y2026": 4.31
+ },
+ "MIX9 Binance | BB 07-01..": {
+  "sharpe": 1.43,
+  "ret_yr": 72.6,
+  "maxdd": -22.0,
+  "p30neg": 0.29,
+  "worst30": -23.8,
+  "corr_smb": -0.21,
+  "corr_live": 0.2,
+  "y2026": 1.43
+ },
+ "MIX9 OKX universe, Binance prices | IS 2021-23": {
+  "sharpe": 2.09,
+  "ret_yr": 51.8,
+  "maxdd": -12.7,
+  "p30neg": 0.27,
+  "worst30": -10.5,
+  "corr_smb": 0.14,
+  "corr_live": 0.32,
+  "y2021": 2.76,
+  "y2022": 1.44,
+  "y2023": 1.91
+ },
+ "MIX9 OKX universe, Binance prices | OS 2024-26H1": {
+  "sharpe": 1.73,
+  "ret_yr": 60.0,
+  "maxdd": -21.6,
+  "p30neg": 0.39,
+  "worst30": -13.5,
+  "corr_smb": 0.16,
+  "corr_live": 0.15,
+  "y2024": 0.32,
+  "y2025": 1.9,
+  "y2026": 3.35
+ },
+ "MIX9 OKX universe, Binance prices | BB 07-01..": {
+  "sharpe": -1.52,
+  "ret_yr": -49.6,
+  "maxdd": -21.6,
+  "p30neg": 0.61,
+  "worst30": -15.2,
+  "corr_smb": -0.01,
+  "corr_live": -0.05,
+  "y2026": -1.52
+ },
+ "MIX9 on OKX (universe + prices + OKX volume cost) | IS 2021-23": {
+  "sharpe": 1.95,
+  "ret_yr": 48.6,
+  "maxdd": -13.2,
+  "p30neg": 0.29,
+  "worst30": -10.6,
+  "corr_smb": 0.14,
+  "corr_live": 0.32,
+  "y2021": 2.66,
+  "y2022": 1.28,
+  "y2023": 1.72
+ },
+ "MIX9 on OKX (universe + prices + OKX volume cost) | OS 2024-26H1": {
+  "sharpe": 1.64,
+  "ret_yr": 57.2,
+  "maxdd": -22.7,
+  "p30neg": 0.41,
+  "worst30": -13.7,
+  "corr_smb": 0.16,
+  "corr_live": 0.13,
+  "y2024": 0.22,
+  "y2025": 1.77,
+  "y2026": 3.28
+ },
+ "MIX9 on OKX (universe + prices + OKX volume cost) | BB 07-01..": {
+  "sharpe": -1.43,
+  "ret_yr": -44.2,
+  "maxdd": -19.2,
+  "p30neg": 0.5,
+  "worst30": -16.9,
+  "corr_smb": -0.04,
+  "corr_live": -0.11,
+  "y2026": -1.43
+ },
+ "okx_names_in_basket": {
+  "2021": 48,
+  "2022": 60,
+  "2023": 78,
+  "2024": 98,
+  "2025": 119,
+  "2026": 128
+ }
+}

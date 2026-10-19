@@ -1,0 +1,314 @@
+{
+ "name": "MIX9_K15",
+ "paper_start": "2026-10-20",
+ "live_start": "2026-10-20 (Binance USDT-M sub-account)",
+ "construction": {
+  "z": "sign x winsor(cs_zscore(raw), 3) per member on the PIT top-200 basket (30 d $ volume)",
+  "composite": "mean of available member z per coin",
+  "book": "15 highest +0.5/15, 15 lowest -0.5/15",
+  "rebalance": "daily, signal at close d-1",
+  "gross_reported": "1.27x (2000 / 1573.9)",
+  "cost": "5bp taker + 2/5/10/20bp tier by previous-day $ volume; real Binance funding",
+  "live_lag": "ag_* / ls_* fields lagged 1 day (published a day late)"
+ },
+ "selection": {
+  "source": "39 SINGLES_OS10 alphas (IS >= 1.4 and OS >= 1.0)",
+  "rule": "average-linkage clusters on 1 - corr of IS daily net, cut 0.5; best IS Sharpe per cluster",
+  "n_clusters": 9,
+  "max_pair_corr": 0.5,
+  "trials_in_family": 12
+ },
+ "members": [
+  {
+   "key": "cond|taker10|taker20|low|s3",
+   "sign": 1,
+   "is_sharpe": 1.47,
+   "cluster": 3,
+   "expr": "cs_zscore(ts_ema(cs_zscore(ts_mean(taker_buy_ratio, 10)) * (1 - rank(ts_mean(taker_buy_ratio, 20))), 3))"
+  },
+  {
+   "key": "diverge|fund_chg40|taker20|s5",
+   "sign": -1,
+   "is_sharpe": 1.85,
+   "cluster": 2,
+   "expr": "cs_zscore(ts_ema(cs_zscore(ts_mean(funding, 3) - ts_mean(funding, 40)) - cs_zscore(ts_mean(taker_buy_ratio, 20)), 5))"
+  },
+  {
+   "key": "diverge|fund_chg60|illiq10|s5",
+   "sign": -1,
+   "is_sharpe": 2.58,
+   "cluster": 6,
+   "expr": "cs_zscore(ts_ema(cs_zscore(ts_mean(funding, 3) - ts_mean(funding, 60)) - cs_zscore(log(ts_mean(abs(returns) / quote_volume, 10))), 5))"
+  },
+  {
+   "key": "diverge|size5|taker5|s5",
+   "sign": -1,
+   "is_sharpe": 2.97,
+   "cluster": 7,
+   "expr": "cs_zscore(ts_ema(cs_zscore(log(ts_mean(quote_volume, 5))) - cs_zscore(ts_mean(taker_buy_ratio, 5)), 5))"
+  },
+  {
+   "key": "diverge|sweep20|tk_us20|s5",
+   "sign": -1,
+   "is_sharpe": 1.66,
+   "cluster": 1,
+   "expr": "cs_zscore(ts_ema(cs_zscore(ts_mean(log(ag_sweep), 20)) - cs_zscore(ts_mean(tk_us, 20)), 5))"
+  },
+  {
+   "key": "diverge|trade_size10|vwap_dev40|s0",
+   "sign": -1,
+   "is_sharpe": 1.56,
+   "cluster": 9,
+   "expr": "cs_zscore(cs_zscore(log(ts_mean(trade_size, 10))) - cs_zscore(ts_mean(log(close / vwap), 40)))"
+  },
+  {
+   "key": "regime|illiq20|taker40|dispersion|s5",
+   "sign": 1,
+   "is_sharpe": 2.15,
+   "cluster": 4,
+   "expr": "cs_zscore(ts_ema(where(st_dispersion > 0, cs_zscore(log(ts_mean(abs(returns) / quote_volume, 20))), cs_zscore(ts_mean(taker_buy_ratio, 40))), 5))"
+  },
+  {
+   "key": "regime|illiq60|tk_us10|mkt_vol|s3",
+   "sign": 1,
+   "is_sharpe": 2.55,
+   "cluster": 5,
+   "expr": "cs_zscore(ts_ema(where(st_mkt_vol > 0, cs_zscore(log(ts_mean(abs(returns) / quote_volume, 60))), cs_zscore(ts_mean(tk_us, 10))), 3))"
+  },
+  {
+   "key": "regime|vpin60|smart_dumb10|mkt_vol|s5",
+   "sign": 1,
+   "is_sharpe": 1.55,
+   "cluster": 8,
+   "expr": "cs_zscore(ts_ema(where(st_mkt_vol > 0, cs_zscore(ts_mean(ag_vpin, 60)), cs_zscore(log(ts_mean(ls_top_pos, 10)) - log(ts_mean(ls_global, 10)))), 5))"
+  }
+ ],
+ "results": {
+  "IS_2021_2023": {
+   "sharpe": 3.26,
+   "ret_yr": 89.5,
+   "maxdd": -10.4,
+   "p30neg": 0.21,
+   "worst30": -9.2,
+   "corr_smb": 0.07,
+   "corr_live": 0.29,
+   "y2021": 4.21,
+   "y2022": 2.6,
+   "y2023": 2.78
+  },
+  "IS_live_ref": {
+   "sharpe": 2.12,
+   "ret_yr": 60.2,
+   "maxdd": -28.8,
+   "p30neg": 0.31,
+   "worst30": -21.0,
+   "corr_smb": 0.52,
+   "corr_live": 1.0,
+   "y2021": 3.04,
+   "y2022": 2.76,
+   "y2023": -0.04
+  },
+  "IS_dsr": 1.0,
+  "OS_2024_2026H1": {
+   "sharpe": 2.46,
+   "ret_yr": 100.8,
+   "maxdd": -20.3,
+   "p30neg": 0.27,
+   "worst30": -15.5,
+   "corr_smb": -0.02,
+   "corr_live": 0.25,
+   "y2024": 1.79,
+   "y2025": 1.75,
+   "y2026": 4.5
+  },
+  "OS_live_ref": {
+   "sharpe": 1.81,
+   "ret_yr": 61.1,
+   "maxdd": -33.3,
+   "p30neg": 0.28,
+   "worst30": -26.5,
+   "corr_smb": 0.14,
+   "corr_live": 1.0,
+   "y2024": 1.66,
+   "y2025": 1.48,
+   "y2026": 2.79
+  },
+  "OS_wfe": 0.75,
+  "BB_2026_07_01_10_18": {
+   "sharpe": 1.43,
+   "ret_yr": 72.6,
+   "maxdd": -22.0,
+   "p30neg": 0.29,
+   "worst30": -23.8,
+   "corr_smb": -0.21,
+   "corr_live": 0.2,
+   "y2026": 1.43
+  },
+  "BB_live_ref": {
+   "sharpe": 0.72,
+   "ret_yr": 32.9,
+   "maxdd": -15.4,
+   "p30neg": 0.24,
+   "worst30": -10.4,
+   "corr_smb": 0.28,
+   "corr_live": 1.0,
+   "y2026": 0.72
+  },
+  "BB_monthly": {
+   "2026-07": {
+    "LIVE": 3.17,
+    "MIX9": 19.56
+   },
+   "2026-08": {
+    "LIVE": 10.07,
+    "MIX9": -23.99
+   },
+   "2026-09": {
+    "LIVE": -6.12,
+    "MIX9": 21.77
+   },
+   "2026-10": {
+    "LIVE": 2.7,
+    "MIX9": 4.34
+   }
+  },
+  "OKX_venue": {
+   "LIVE (Binance) | IS 2021-23": {
+    "sharpe": 2.11,
+    "ret_yr": 59.9,
+    "maxdd": -28.8,
+    "p30neg": 0.31,
+    "worst30": -21.0,
+    "corr_smb": 0.52,
+    "corr_live": 1.0,
+    "y2021": 3.04,
+    "y2022": 2.76,
+    "y2023": -0.08
+   },
+   "LIVE (Binance) | OS 2024-26H1": {
+    "sharpe": 1.9,
+    "ret_yr": 65.3,
+    "maxdd": -33.3,
+    "p30neg": 0.28,
+    "worst30": -26.5,
+    "corr_smb": 0.15,
+    "corr_live": 1.0,
+    "y2024": 1.66,
+    "y2025": 1.48,
+    "y2026": 3.11
+   },
+   "LIVE (Binance) | BB 07-01..": {
+    "sharpe": 0.72,
+    "ret_yr": 32.9,
+    "maxdd": -15.4,
+    "p30neg": 0.24,
+    "worst30": -10.4,
+    "corr_smb": 0.28,
+    "corr_live": 1.0,
+    "y2026": 0.72
+   },
+   "MIX9 Binance | IS 2021-23": {
+    "sharpe": 3.26,
+    "ret_yr": 89.5,
+    "maxdd": -10.4,
+    "p30neg": 0.21,
+    "worst30": -9.2,
+    "corr_smb": 0.07,
+    "corr_live": 0.29,
+    "y2021": 4.21,
+    "y2022": 2.6,
+    "y2023": 2.78
+   },
+   "MIX9 Binance | OS 2024-26H1": {
+    "sharpe": 2.42,
+    "ret_yr": 99.0,
+    "maxdd": -20.3,
+    "p30neg": 0.27,
+    "worst30": -15.5,
+    "corr_smb": -0.02,
+    "corr_live": 0.23,
+    "y2024": 1.79,
+    "y2025": 1.75,
+    "y2026": 4.31
+   },
+   "MIX9 Binance | BB 07-01..": {
+    "sharpe": 1.43,
+    "ret_yr": 72.6,
+    "maxdd": -22.0,
+    "p30neg": 0.29,
+    "worst30": -23.8,
+    "corr_smb": -0.21,
+    "corr_live": 0.2,
+    "y2026": 1.43
+   },
+   "MIX9 OKX universe, Binance prices | IS 2021-23": {
+    "sharpe": 2.09,
+    "ret_yr": 51.8,
+    "maxdd": -12.7,
+    "p30neg": 0.27,
+    "worst30": -10.5,
+    "corr_smb": 0.14,
+    "corr_live": 0.32,
+    "y2021": 2.76,
+    "y2022": 1.44,
+    "y2023": 1.91
+   },
+   "MIX9 OKX universe, Binance prices | OS 2024-26H1": {
+    "sharpe": 1.73,
+    "ret_yr": 60.0,
+    "maxdd": -21.6,
+    "p30neg": 0.39,
+    "worst30": -13.5,
+    "corr_smb": 0.16,
+    "corr_live": 0.15,
+    "y2024": 0.32,
+    "y2025": 1.9,
+    "y2026": 3.35
+   },
+   "MIX9 OKX universe, Binance prices | BB 07-01..": {
+    "sharpe": -1.52,
+    "ret_yr": -49.6,
+    "maxdd": -21.6,
+    "p30neg": 0.61,
+    "worst30": -15.2,
+    "corr_smb": -0.01,
+    "corr_live": -0.05,
+    "y2026": -1.52
+   },
+   "MIX9 on OKX (universe + prices + OKX volume cost) | IS 2021-23": {
+    "sharpe": 1.95,
+    "ret_yr": 48.6,
+    "maxdd": -13.2,
+    "p30neg": 0.29,
+    "worst30": -10.6,
+    "corr_smb": 0.14,
+    "corr_live": 0.32,
+    "y2021": 2.66,
+    "y2022": 1.28,
+    "y2023": 1.72
+   },
+   "MIX9 on OKX (universe + prices + OKX volume cost) | OS 2024-26H1": {
+    "sharpe": 1.64,
+    "ret_yr": 57.2,
+    "maxdd": -22.7,
+    "p30neg": 0.41,
+    "worst30": -13.7,
+    "corr_smb": 0.16,
+    "corr_live": 0.13,
+    "y2024": 0.22,
+    "y2025": 1.77,
+    "y2026": 3.28
+   },
+   "MIX9 on OKX (universe + prices + OKX volume cost) | BB 07-01..": {
+    "sharpe": -1.43,
+    "ret_yr": -44.2,
+    "maxdd": -19.2,
+    "p30neg": 0.5,
+    "worst30": -16.9,
+    "corr_smb": -0.04,
+    "corr_live": -0.11,
+    "y2026": -1.43
+   }
+  }
+ }
+}

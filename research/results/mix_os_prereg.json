@@ -1,0 +1,18 @@
+{
+ "frozen_at": "2026-10-19T11:23:50.737728+00:00",
+ "trial": "CLUST_K15_none",
+ "members": [
+  "cond|taker10|taker20|low|s3",
+  "diverge|fund_chg40|taker20|s5",
+  "diverge|fund_chg60|illiq10|s5",
+  "diverge|size5|taker5|s5",
+  "diverge|sweep20|tk_us20|s5",
+  "diverge|trade_size10|vwap_dev40|s0",
+  "regime|illiq20|taker40|dispersion|s5",
+  "regime|illiq60|tk_us10|mkt_vol|s3",
+  "regime|vpin60|smart_dumb10|mkt_vol|s5"
+ ],
+ "k": 15,
+ "lev": 1.2707287629455493,
+ "spec": "mix_os.py docstring"
+}

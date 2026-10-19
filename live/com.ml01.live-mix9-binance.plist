@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Installed 2026-10-19 (user: Binance sub-account instead of OKX). MIX9_K15 on Binance USDT-M. Trades only when LIVE_DRY_RUN=0 in system-mix9/.env.binance. 09:30 local = after the 08:15 data refresh
+     (panel path: members need session taker / aggTrades fields); 10:30 and 12:00 = retries. Trades once per data bar.
+     Stop: launchctl unload -w ~/Library/LaunchAgents/com.ml01.live-mix9-binance.plist -->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.ml01.live-mix9-binance</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/phamlongvu/ML01/.venv/bin/python</string>
+        <string>-W</string>
+        <string>ignore</string>
+        <string>/Users/phamlongvu/Desktop/alpha-live/system-mix9/run_live_mix9_binance.py</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/Users/phamlongvu/Desktop/alpha-live/system-mix9</string>
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict><key>Hour</key><integer>9</integer><key>Minute</key><integer>30</integer></dict>
+        <dict><key>Hour</key><integer>10</integer><key>Minute</key><integer>30</integer></dict>
+        <dict><key>Hour</key><integer>12</integer><key>Minute</key><integer>0</integer></dict>
+    </array>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>MIX9_LIVE</key><string>1</string>
+        <key>MIX9_NOTIONAL</key><string>1000</string>
+        <key>MIX9_LEVERAGE</key><string>3</string>
+    </dict>
+    <key>StandardOutPath</key>
+    <string>/Users/phamlongvu/Desktop/alpha-live/system-mix9/logs/stdout_binance.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/phamlongvu/Desktop/alpha-live/system-mix9/logs/stderr_binance.log</string>
+</dict>
+</plist>

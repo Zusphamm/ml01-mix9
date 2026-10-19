@@ -1,0 +1,7 @@
+.env
+.env.*
+!.env.example
+**/state*.json
+**/ledger*/
+**/logs/
+__pycache__/

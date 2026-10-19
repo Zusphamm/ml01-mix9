@@ -1,0 +1,175 @@
+{
+ "frozen_at": "2026-10-19T11:20:55.424397+00:00",
+ "sets": {
+  "CLUST": [
+   "cond|taker10|taker20|low|s3",
+   "diverge|fund_chg40|taker20|s5",
+   "diverge|fund_chg60|illiq10|s5",
+   "diverge|size5|taker5|s5",
+   "diverge|sweep20|tk_us20|s5",
+   "diverge|trade_size10|vwap_dev40|s0",
+   "regime|illiq20|taker40|dispersion|s5",
+   "regime|illiq60|tk_us10|mkt_vol|s3",
+   "regime|vpin60|smart_dumb10|mkt_vol|s5"
+  ],
+  "GREEDY": [
+   "diverge|size5|taker5|s5",
+   "regime|illiq60|tk_us10|mkt_vol|s3",
+   "regime|burst60|tk_late20|btc_trend|s3",
+   "diverge|fund_chg40|taker20|s5",
+   "diverge|dist_low60|size10|s5",
+   "cond|taker10|taker20|low|s3"
+  ]
+ },
+ "members": {
+  "CLUST": [
+   {
+    "key": "cond|taker10|taker20|low|s3",
+    "is_sharpe": 1.47,
+    "cluster": 3
+   },
+   {
+    "key": "diverge|fund_chg40|taker20|s5",
+    "is_sharpe": 1.85,
+    "cluster": 2
+   },
+   {
+    "key": "diverge|fund_chg60|illiq10|s5",
+    "is_sharpe": 2.58,
+    "cluster": 6
+   },
+   {
+    "key": "diverge|size5|taker5|s5",
+    "is_sharpe": 2.97,
+    "cluster": 7
+   },
+   {
+    "key": "diverge|sweep20|tk_us20|s5",
+    "is_sharpe": 1.66,
+    "cluster": 1
+   },
+   {
+    "key": "diverge|trade_size10|vwap_dev40|s0",
+    "is_sharpe": 1.56,
+    "cluster": 9
+   },
+   {
+    "key": "regime|illiq20|taker40|dispersion|s5",
+    "is_sharpe": 2.15,
+    "cluster": 4
+   },
+   {
+    "key": "regime|illiq60|tk_us10|mkt_vol|s3",
+    "is_sharpe": 2.55,
+    "cluster": 5
+   },
+   {
+    "key": "regime|vpin60|smart_dumb10|mkt_vol|s5",
+    "is_sharpe": 1.55,
+    "cluster": 8
+   }
+  ],
+  "GREEDY": [
+   {
+    "key": "diverge|size5|taker5|s5",
+    "is_sharpe": 2.97,
+    "cluster": 7
+   },
+   {
+    "key": "regime|illiq60|tk_us10|mkt_vol|s3",
+    "is_sharpe": 2.55,
+    "cluster": 5
+   },
+   {
+    "key": "regime|burst60|tk_late20|btc_trend|s3",
+    "is_sharpe": 1.98,
+    "cluster": 4
+   },
+   {
+    "key": "diverge|fund_chg40|taker20|s5",
+    "is_sharpe": 1.85,
+    "cluster": 2
+   },
+   {
+    "key": "diverge|dist_low60|size10|s5",
+    "is_sharpe": 1.78,
+    "cluster": 6
+   },
+   {
+    "key": "cond|taker10|taker20|low|s3",
+    "is_sharpe": 1.47,
+    "cluster": 3
+   }
+  ]
+ },
+ "max_pair_corr": {
+  "CLUST": 0.5,
+  "GREEDY": 0.38
+ },
+ "n_clusters": 9,
+ "trials": {
+  "CLUST_K15_none": [
+   "CLUST",
+   15,
+   "none"
+  ],
+  "CLUST_K15_trend": [
+   "CLUST",
+   15,
+   "trend"
+  ],
+  "CLUST_K15_hedge": [
+   "CLUST",
+   15,
+   "hedge"
+  ],
+  "CLUST_K30_none": [
+   "CLUST",
+   30,
+   "none"
+  ],
+  "CLUST_K30_trend": [
+   "CLUST",
+   30,
+   "trend"
+  ],
+  "CLUST_K30_hedge": [
+   "CLUST",
+   30,
+   "hedge"
+  ],
+  "GREEDY_K15_none": [
+   "GREEDY",
+   15,
+   "none"
+  ],
+  "GREEDY_K15_trend": [
+   "GREEDY",
+   15,
+   "trend"
+  ],
+  "GREEDY_K15_hedge": [
+   "GREEDY",
+   15,
+   "hedge"
+  ],
+  "GREEDY_K30_none": [
+   "GREEDY",
+   30,
+   "none"
+  ],
+  "GREEDY_K30_trend": [
+   "GREEDY",
+   30,
+   "trend"
+  ],
+  "GREEDY_K30_hedge": [
+   "GREEDY",
+   30,
+   "hedge"
+  ]
+ },
+ "primary": "CLUST_K15_trend",
+ "n_family": 20,
+ "spec": "mix_btc.py docstring"
+}
